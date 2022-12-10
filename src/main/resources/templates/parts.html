@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>parts</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="../index.html">На главную</a></li>
+        <li>Справочник деталей</li>
+        <li><a href="parts-supplies">Договорные поставки деталей</a></li>
+        <li><a href="parts-supplies/task1">Задание 1</a></li>
+        <li><a href="parts/task2">Задание 2</a></li>
+        <li><a href="parts-supplies/task3">Задание 3</a></li>
+    </ul>
+</nav>
+<div th:switch="${parts}">
+    <h2 th:case="null">No parts found!</h2>
+    <div th:case="*">
+        <h2>Parts</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>code</th>
+                <th>type</th>
+                <th>name</th>
+                <th>measure</th>
+                <th>target_price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="part : ${parts}">
+                <td th:text="${part.code}"></td>
+                <td th:text="${part.type}"></td>
+                <td th:text="${part.name}"></td>
+                <td th:text="${part.measure}"></td>
+                <td th:text="${part.targetPrice}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

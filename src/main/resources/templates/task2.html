@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 2</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../../index.html">На главную</a></li>
+      <li><a href="../parts">Справочник деталей</a></li>
+      <li><a href="../parts-supplies">Договорные поставки деталей</a></li>
+      <li><a href="../../parts-supplies/task1">Задание1</a></li>
+      <li>Задание 2</li>
+      <li><a href="../../parts-supplies/task3">Задание 3</a></li>
+    </ul>
+  </nav>
+  <div th:switch="${task2_res}">
+    <h2 th:case="null">No result for task_2 found!</h2>
+    <div th:case="*">
+      <h2>Task 2 result</h2>
+      <table>
+        <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>totalSum</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="part : ${task2_res}">
+          <td th:text="${part.code}"></td>
+          <td th:text="${part.name}"></td>
+          <td th:text="${part.totalSum}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

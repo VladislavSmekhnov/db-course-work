@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>parts</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">На главную</a></li>
+      <li><a href="parts">Справочник деталей</a></li>
+      <li>Договорные поставки деталей</li>
+      <li><a href="parts-supplies/task1">Задание 1</a></li>
+      <li><a href="parts/task2">Задание 2</a></li>
+      <li><a href="parts-supplies/task3">Задание 3</a></li>
+    </ul>
+  </nav>
+  <div th:switch="${parts_supplies}">
+    <h2 th:case="null">No parts supplies found!</h2>
+    <div th:case="*">
+      <h2>Parts supplies</h2>
+      <table>
+        <thead>
+        <tr>
+          <th>contract_number</th>
+          <th>part_code</th>
+          <th>measure</th>
+          <th>delivery_start_date</th>
+          <th>delivery_end_date</th>
+          <th>delivery_plan</th>
+          <th>contract_price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="supply : ${parts_supplies}">
+          <td th:text="${supply.contractNumber}"></td>
+          <td th:text="${supply.partCode}"></td>
+          <td th:text="${supply.measure}"></td>
+          <td th:text="${supply.deliveryStartDate}"></td>
+          <td th:text="${supply.deliveryEndDate}"></td>
+          <td th:text="${supply.deliveryPlan}"></td>
+          <td th:text="${supply.contractPrice}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

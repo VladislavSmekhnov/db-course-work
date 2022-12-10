@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 1</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../../index.html">На главную</a></li>
+      <li><a href="../parts">Справочник деталей</a></li>
+      <li><a href="../parts-supplies">Договорные поставки деталей</a></li>
+      <li>Задание 1</li>
+      <li><a href="../../parts/task2">Задание 2</a></li>
+      <li><a href="../parts-supplies/task3">Задание 3</a></li>
+    </ul>
+  </nav>
+  <div th:switch="${task1_res}">
+    <h2 th:case="null">No result for task_1 found!</h2>
+    <div th:case="*">
+      <h2>Task 1 result</h2>
+      <table>
+        <thead>
+        <tr>
+          <th>contract_number</th>
+          <th>name</th>
+          <th>contract_price</th>
+          <th>delivery_plan</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="supply : ${task1_res}">
+          <td th:text="${supply.contractNumber}"></td>
+          <td th:text="${supply.partName}"></td>
+          <td th:text="${supply.contractPrice}"></td>
+          <td th:text="${supply.deliveryPlan}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
